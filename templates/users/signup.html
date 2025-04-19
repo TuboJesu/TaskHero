@@ -1,0 +1,112 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block contents %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+<div class="auth-container">
+    <form class="auth-form" action="{% url 'users:signup' %}" method="POST">
+        {% csrf_token %}
+        <h2 class="auth-form-title">Sign Up</h2>
+
+        {% if form.non_field_errors %}
+            <div class="form-group">
+                {% for error in form.non_field_errors %}
+                    <p class="p-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+                type="text" 
+                name="username" 
+                id="username" 
+                required 
+                value="{{ form.username.value|default_if_none:'' }}">
+            {% for error in form.username.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input 
+                type="text" 
+                name="first_name" 
+                id="first_name" 
+                required 
+                value="{{ form.first_name.value|default_if_none:'' }}">
+            {% for error in form.first_name.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input 
+                type="text" 
+                name="last_name" 
+                id="last_name" 
+                required 
+                value="{{ form.last_name.value|default_if_none:'' }}">
+            {% for error in form.last_name.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                required 
+                value="{{ form.email.value|default_if_none:'' }}">
+            {% for error in form.email.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input 
+                type="password" 
+                name="password1" 
+                id="password1" 
+                required>
+            {% for error in form.password1.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input 
+                type="password" 
+                name="password2" 
+                id="password2" 
+                required>
+            {% for error in form.password2.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="auth-submit-btn">Sign Up</button>
+
+        <div class="auth-links">
+            <a href="#">Forgot Password?</a> |
+            <a href="{% url 'users:login' %}">Already have an account? Log In</a>
+        </div>
+    </form>
+</div>
+{% endblock contents %}

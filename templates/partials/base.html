@@ -1,0 +1,59 @@
+{% load static %}
+
+<title>{% block title %} TASKHERO| Manage Smarter {% endblock title %}</title>
+
+<!-- HEADER -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<header class="navbar">
+
+  <!-- Header Left -->
+  <div class="header__left">
+    <div class="fn__token_info">
+      <span class="token_summary">
+
+        {% if request.user.is_authenticated %}
+
+            <span class="count">Welcome</span>
+            <span class="text">{{ request.user.first_name }}</span>
+            <div class="token__popup">
+            Welcome to the world of <span>endless possibilities.</span><br>
+            </div>
+        {% else %}
+
+            <span class="count">
+                <a href="{%  url 'users:login' %}" style="text-decoration: none; color: grey">Please Login</a>
+            </span>
+            <div class="token__popup">
+            Get access to create your personalized Todos, edit and delete</span><br>
+            </div>
+        {% endif %}
+
+      </span>
+    </div>
+  </div>
+  <!-- !Header Left -->
+
+      <!-- User Info -->
+    {% if request.user.is_authenticated %}
+
+        <div>
+                <form method="POST" action="{% url 'users:logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class='logout'>
+
+                    <span class="text">Log Out</span>
+                    </button>
+                </form>
+        </div>
+
+    {% endif %}
+      <!-- !User Info -->
+
+
+</header>
+<!-- !HEADER -->
+
+{% block contents %}
+
+{% endblock contents %}

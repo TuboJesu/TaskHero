@@ -1,0 +1,52 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block contents %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <script src="{% static 'js/home.js' %}"></script>
+</head>
+
+<body>
+  <div class="hero-wrapper">
+
+    <!-- Background SVG Particles -->
+    <svg class="svg-bg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="dotGradient" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6e73ff" stop-opacity="0.2" />
+          <stop offset="100%" stop-color="transparent" />
+        </radialGradient>
+      </defs>
+      <g>
+        <circle cx="10%" cy="20%" r="3" fill="url(#dotGradient)">
+          <animate attributeName="cy" values="20%;25%;20%" dur="8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="80%" cy="60%" r="4" fill="url(#dotGradient)">
+          <animate attributeName="cy" values="60%;65%;60%" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="45%" cy="30%" r="2.5" fill="url(#dotGradient)">
+          <animate attributeName="cy" values="30%;35%;30%" dur="7s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="65%" cy="75%" r="3" fill="url(#dotGradient)">
+          <animate attributeName="cy" values="75%;80%;75%" dur="5s" repeatCount="indefinite" />
+        </circle>
+      </g>
+    </svg>
+
+    <!-- Hero Content -->
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <h1 class="hero-title">Welcome to <span class="hero-highlight">TaskHero</span></h1>
+        <h2 class="hero-subtitle">Empower Your Workflow with Focus & Flexibility</h2>
+        <p class="hero-description">
+          TaskHero helps individuals and teams organize work visually and intuitively.<br>
+          Whether you’re brainstorming, sprinting, or tracking deliverables — we've got your back.
+        </p>
+        <button id="signup-btn" data-signup-url="{% url 'users:signup' %}">Join TaskHero Now</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+{% endblock contents %}

@@ -1,0 +1,64 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+
+
+{% block contents %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<div class="auth-container">
+
+    <form class="auth-form" action="{% url 'users:login' %}" method="POST">
+        {% csrf_token %}
+
+        <h2 class="auth-form-title">Log In</h2>
+
+        {% if form.non_field_errors %}
+            <div class="form-group">
+                {% for error in form.non_field_errors %}
+                    <p class="p-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+                type="text" 
+                name="username" 
+                id="username" 
+                value="{{ form.username.value|default_if_none:'' }}" 
+                required
+            >
+            <i class="fas fa-user"></i>
+            {% for error in form.username.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                required
+            >
+            <i class="fas fa-lock"></i>
+            {% for error in form.password.errors %}
+                <p class="p-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <input type="submit" class="auth-submit-btn" value="Login">
+
+        <div class="auth-links">
+            <a href="#">Forgot Password?</a> |
+            <a href="{% url 'users:signup' %}">Sign Up</a>
+        </div>
+    </form>
+
+</div>
+{% endblock contents %}

@@ -1,0 +1,213 @@
+:root {
+  --techwave-main-color: #7c5fe3;
+  --techwave-site-bg-color: #0f0e11;
+  --techwave-header-bg-color: #17151b;
+  --techwave-border-color: #33059c;
+  --techwave-heading-color: #c0bcca;
+  --techwave-body-color: #7e7a86;
+  --techwave-left-panel-width: 0px;
+  --techwave-header-height: 100px;
+  --techwave-hover-color: #fff;
+}
+
+/* 🌌 Body Background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #240a84;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    height: 100vh;
+    background: linear-gradient(to bottom, #0f0c29, #1e1857, #24243e);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+  }
+  
+.overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+.techwave_fn_header {
+  position: fixed;
+  top: 0;
+  left: var(--techwave-left-panel-width);
+  right: 0;
+  background-color: var(--techwave-header-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 100;
+  height: var(--techwave-header-height);
+}
+
+.techwave_fn_header:after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--techwave-border-color);
+}
+
+.fn__token_info {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: var(--techwave-header-height);
+}
+
+.fn__token_info .token_summary {
+  border-radius: 5px;
+  background-color: linear-gradient(to bottom, #2b2569, #1e1857, #b1b1bc);
+  line-height: 16px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+  margin-right: 20px;
+  color: var(--techwave-heading-color);
+}
+
+.fn__token_info .count {
+  font-weight: 600;
+  font-size: 18px;
+  padding-right: 25px;
+  position: relative;
+}
+
+.fn__token_info .count:after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  margin-top: -15px;
+  height: 30px;
+  background-color: #413e45;
+  width: 1px;
+}
+
+.fn__token_info .text {
+  line-height: 16px;
+  font-size: 12px;
+}
+
+.fn__token_info .token__popup {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 0.2s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  background-color: var(--techwave-header-bg-color);
+  padding: 12px 15px;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--techwave-border-color);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.fn__token_info:hover .token__popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.fn__nav_bar {
+  display: flex;
+  align-items: center;
+}
+
+.fn__nav_bar .bar__item {
+  height: var(--techwave-header-height);
+  position: relative;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fn__nav_bar .item_opener {
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: relative;
+  color: var(--techwave-heading-color);
+}
+
+.fn__nav_bar .item_opener:hover {
+  opacity: 0.8;
+}
+
+.fn__nav_bar .item_popup {
+  position: absolute;
+  right: 0;
+  background-color: var(--techwave-header-bg-color);
+  border: 1px solid var(--techwave-border-color);
+  border-radius: 0 0 5px 5px;
+  opacity: 0;
+  transition: 0.2s;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.fn__nav_bar .bar__item.opened .item_popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    background: linear-gradient(to bottom, #0f0c29, #09071f);
+    /* margin-top: -1%; */
+    height: 40px;
+}
+
+.navbar h2 {
+    display: flex;
+    align-items: center;
+}
+
+.navbar h2 .username {
+    font-size: 0.85rem;
+    margin-left: 0.75rem;
+    color: #aaa;
+}
+
+.logout {
+    padding: 0.25rem 0.75rem;
+    border: none;
+    background-color: transparent;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+}
+
+.logout:hover {
+    color: white;
+}
